@@ -1,37 +1,48 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { BsFillTrashFill } from 'react-icons/bs';
+
 import { colors, fonts, gStyle } from '../constants';
 
 // components
 import Header from '../components/Header';
+import DownloadItem from '../components/DownloadItem';
 
 // icons
 import SvgBackground from '../components/icons/Svg.Background';
 import SvgDownloads from '../components/icons/Svg.Downloads';
 
-const Downloads = () => (
+
+const EmptyDownloads = () => (
+  <View style={styles.containerContent}>
+    <View style={styles.containerIcon}>
+      <SvgDownloads fill={colors.profileBackground} size={48} />
+    </View>
+
+    <Text style={styles.heading}>You have no downloads</Text>
+
+    <Text style={styles.description}>
+      Movies and series you download will appear here.
+    </Text>
+  </View>
+);
+
+const Downloads = () => { 
+
+
+  return(
   <View style={gStyle.container}>
     <View style={gStyle.posAbsolute}>
       <SvgBackground />
     </View>
-
     <Header title="Downloads" />
-
-    <View style={styles.containerContent}>
-      <View style={styles.containerIcon}>
-        <SvgDownloads fill={colors.profileBackground} size={48} />
-      </View>
-
-      <Text style={styles.heading}>You have no downloads</Text>
-
-      <Text style={styles.description}>
-        Movies and series you download will appear here.
-      </Text>
-    </View>
+    <EmptyDownloads />
   </View>
-);
+)
+};
 
 const styles = StyleSheet.create({
+  
   containerContent: {
     alignItems: 'center',
     justifyContent: 'center',
